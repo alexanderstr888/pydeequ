@@ -14,9 +14,11 @@ def iterable_to_scala_seq(jvm, iterable):
         toSeq()
 
 def iterable_to_scala_array(jvm, iterable):
-    return jvm.scala.collection.JavaConversions.\
-        iterableAsScalaIterable(iterable).\
-        toList().toArray
+    scala_lst = jvm.scala.collection.JavaConversions. \
+        iterableAsScalaIterable(iterable). \
+        toList()
+    return jvm.Converter.convertIterableToScalaArray(scala_lst)
+
 
 def simple_date_format(jvm, s):
     return jvm.java.text.SimpleDateFormat(s)
